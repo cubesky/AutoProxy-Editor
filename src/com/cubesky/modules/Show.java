@@ -30,26 +30,32 @@ public class Show implements Module {
             StringBuilder builder=new StringBuilder();
             Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
             builder.append("! Regex\n");
-            stringStream.filter(s -> (!s.startsWith("|")&&(!s.startsWith("@@")))).forEach(s -> builder.append(s).append("\n"));
+            stringStream.filter(s -> (!s.startsWith("|")&&(!s.startsWith("@@"))))
+                    .forEach(s -> builder.append(s).append("\n"));
             System.out.println(builder.toString());
         } else if (args[0].equalsIgnoreCase("subdomain")) {
             StringBuilder builder=new StringBuilder();
             Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
             builder.append("! Subdomain\n");
-            stringStream.filter(s -> s.startsWith("|")&&(!s.startsWith("||"))).forEach(s -> builder.append(s).append("\n"));
+            stringStream.filter(s -> s.startsWith("|")&&(!s.startsWith("||")))
+                    .forEach(s -> builder.append(s).append("\n"));
             System.out.println(builder.toString());
         } else if (args[0].equalsIgnoreCase("not")) {
             StringBuilder builder=new StringBuilder();
             Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
             builder.append("! Not\n");
-            stringStream.filter(s -> s.startsWith("@@")).forEach(s -> builder.append(s).append("\n"));
+            stringStream.filter(s -> s.startsWith("@@"))
+                    .forEach(s -> builder.append(s).append("\n"));
             System.out.println(builder.toString());
         } else {
             final String[] argsf=args;
             StringBuilder builder=new StringBuilder();
             Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
-            builder.append("! ").append(Character.toString(args[0].charAt(0)).toUpperCase()).append("\n");
-            stringStream.filter(s -> Character.toString(s.charAt(2)).equalsIgnoreCase(argsf[0])).forEach(s -> builder.append(s).append("\n"));
+            builder.append("! ")
+                    .append(Character.toString(args[0].charAt(0)).toUpperCase())
+                    .append("\n");
+            stringStream.filter(s -> Character.toString(s.charAt(2)).equalsIgnoreCase(argsf[0]))
+                    .forEach(s -> builder.append(s).append("\n"));
             System.out.println(builder.toString());
         }
 

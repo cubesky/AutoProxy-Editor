@@ -20,7 +20,10 @@ public class Load implements Module {
             args=new String[]{"gfw_whitelist.txt"};
         }
         BufferedReader reader=new BufferedReader(new FileReader(new File(String.join(" ",args).replace("\"",""))));
-        reader.lines().filter(s -> !s.equals("")).filter(s -> (!s.startsWith("!"))).forEach(((TreeSet<String>)Stor.stor.get("gfw"))::add);
+        reader.lines()
+                .filter(s -> !s.equals(""))
+                .filter(s -> (!s.startsWith("!")))
+                .forEach(((TreeSet<String>)Stor.stor.get("gfw"))::add);
         reader.close();
         System.out.println("Load Finished.");
     }
