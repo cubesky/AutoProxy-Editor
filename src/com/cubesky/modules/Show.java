@@ -22,7 +22,7 @@ public class Show implements Module {
         System.out.println("Sorting...");
         doSort();
         System.out.println("\n");
-        if (args[0].equalsIgnoreCase("all")) {
+        if (args[0].equalsIgnoreCase("all")|| args[0].equalsIgnoreCase("-a")) {
             Stor.gfw.forEach(System.out::println);
         } else if (args[0].equalsIgnoreCase("allwithtag") || args[0].equalsIgnoreCase("awt") || args[0].equalsIgnoreCase("-awt")) {
             System.out.println(View.getTagView());
