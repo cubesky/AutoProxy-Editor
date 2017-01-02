@@ -23,26 +23,26 @@ public class Show implements Module {
         doSort();
         System.out.println("\n");
         if (args[0].equalsIgnoreCase("all")) {
-            ((TreeSet<String>) Stor.stor.get("gfw")).forEach(System.out::println);
-        } else if (args[0].equalsIgnoreCase("allwithtag") || args[0].equalsIgnoreCase("awt")) {
+            Stor.gfw.forEach(System.out::println);
+        } else if (args[0].equalsIgnoreCase("allwithtag") || args[0].equalsIgnoreCase("awt") || args[0].equalsIgnoreCase("-awt")) {
             System.out.println(View.getTagView());
-        } else if (args[0].equalsIgnoreCase("regex")) {
+        } else if (args[0].equalsIgnoreCase("regex") || args[0].equalsIgnoreCase("-r")) {
             StringBuilder builder=new StringBuilder();
-            Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
+            Stream<String> stringStream=Stor.gfw.stream();
             builder.append("! Regex\n");
             stringStream.filter(s -> (!s.startsWith("|")&&(!s.startsWith("@@"))))
                     .forEach(s -> builder.append(s).append("\n"));
             System.out.println(builder.toString());
-        } else if (args[0].equalsIgnoreCase("subdomain")) {
+        } else if (args[0].equalsIgnoreCase("subdomain") || args[0].equalsIgnoreCase("-s")) {
             StringBuilder builder=new StringBuilder();
-            Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
+            Stream<String> stringStream=Stor.gfw.stream();
             builder.append("! Subdomain\n");
             stringStream.filter(s -> s.startsWith("|")&&(!s.startsWith("||")))
                     .forEach(s -> builder.append(s).append("\n"));
             System.out.println(builder.toString());
-        } else if (args[0].equalsIgnoreCase("not")) {
+        } else if (args[0].equalsIgnoreCase("not") || args[0].equalsIgnoreCase("-n")) {
             StringBuilder builder=new StringBuilder();
-            Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
+            Stream<String> stringStream=Stor.gfw.stream();
             builder.append("! Not\n");
             stringStream.filter(s -> s.startsWith("@@"))
                     .forEach(s -> builder.append(s).append("\n"));
@@ -50,7 +50,7 @@ public class Show implements Module {
         } else {
             final String[] argsf=args;
             StringBuilder builder=new StringBuilder();
-            Stream<String> stringStream=((TreeSet<String>)Stor.stor.get("gfw")).stream();
+            Stream<String> stringStream=Stor.gfw.stream();
             builder.append("! ")
                     .append(Character.toString(args[0].charAt(0)).toUpperCase())
                     .append("\n");

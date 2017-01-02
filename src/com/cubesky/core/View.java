@@ -11,7 +11,7 @@ public class View {
     public static String getTagView(){
         String linesplit=(System.getProperty("os.name").toLowerCase().contains("windows") ?"\r\n":"\n");
         StringBuilder builder=new StringBuilder();
-        Supplier<Stream<String>> stringStream=() -> ((TreeSet<String>)Stor.stor.get("gfw")).stream();
+        Supplier<Stream<String>> stringStream = () -> Stor.gfw.stream();
         builder.append("! Regex")
                 .append(linesplit);
         stringStream.get()

@@ -13,7 +13,7 @@ public class Remove implements Module {
     public void run(String[] args) throws Exception {
         if(args==null)return;
         if(args.length==1){
-            ((TreeSet<String>) Stor.stor.get("gfw")).remove(args[0]);
+            Stor.gfw.remove(args[0]);
         }
     }
 }

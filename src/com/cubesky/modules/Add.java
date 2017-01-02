@@ -19,18 +19,18 @@ public class Add implements Module {
             System.err.println("Error Args");
             return;
         }
-        if(args[0].equalsIgnoreCase("domain") || args[0].equalsIgnoreCase("d")){
-            ((TreeSet<String>) Stor.stor.get("gfw")).add("||"+args[1]);
-        }else if(args[0].equalsIgnoreCase("subdomain") || args[0].equalsIgnoreCase("s")){
-            ((TreeSet<String>) Stor.stor.get("gfw")).add("|"+args[1]);
-        }else if(args[0].equalsIgnoreCase("regex") || args[0].equalsIgnoreCase("r")){
-            ((TreeSet<String>) Stor.stor.get("gfw")).add(args[1]);
-        }else if(args[0].equalsIgnoreCase("not") || args[0].equalsIgnoreCase("n")){
-            ((TreeSet<String>) Stor.stor.get("gfw")).add("@@"+args[1]);
-        }else if(args[0].equalsIgnoreCase("notdomain") || args[0].equalsIgnoreCase("nd")){
-            ((TreeSet<String>) Stor.stor.get("gfw")).add("@@||"+args[1]);
-        }else if(args[0].equalsIgnoreCase("notsubdomain") || args[0].equalsIgnoreCase("nsd")){
-            ((TreeSet<String>) Stor.stor.get("gfw")).add("@@|"+args[1]);
+        if(args[0].equalsIgnoreCase("domain") || args[0].equalsIgnoreCase("d") || args[0].equalsIgnoreCase("-d")){
+            Stor.gfw.add("||"+args[1]);
+        }else if(args[0].equalsIgnoreCase("subdomain") || args[0].equalsIgnoreCase("s") || args[0].equalsIgnoreCase("-s")){
+            Stor.gfw.add("|"+args[1]);
+        }else if(args[0].equalsIgnoreCase("regex") || args[0].equalsIgnoreCase("r") || args[0].equalsIgnoreCase("-r")){
+            Stor.gfw.add(args[1]);
+        }else if(args[0].equalsIgnoreCase("not") || args[0].equalsIgnoreCase("n") || args[0].equalsIgnoreCase("-n")){
+            Stor.gfw.add("@@"+args[1]);
+        }else if(args[0].equalsIgnoreCase("notdomain") || args[0].equalsIgnoreCase("nd") || args[0].equalsIgnoreCase("-nd")){
+            Stor.gfw.add("@@||"+args[1]);
+        }else if(args[0].equalsIgnoreCase("notsubdomain") || args[0].equalsIgnoreCase("nsd") || args[0].equalsIgnoreCase("-nsd")){
+            Stor.gfw.add("@@|"+args[1]);
         }else{
             System.err.println("Not support.");
         }

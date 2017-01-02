@@ -11,9 +11,8 @@ import java.util.TreeSet;
 public class Sort {
     public static void doSort() throws Exception {
         TreeSet<String> gfw=new TreeSet<String>();
-        ((TreeSet<String>) Stor.stor.get("gfw")).stream().sorted().forEach(gfw::add);
-        Stor.stor.remove("gfw");
-        Stor.stor.put("gfw",gfw);
+        Stor.gfw.stream().sorted().forEach(gfw::add);
+        Stor.gfw=gfw;
         System.out.println("Sorted.");
     }
 }

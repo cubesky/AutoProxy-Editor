@@ -11,9 +11,6 @@ import java.util.TreeSet;
  * Created by max_3 on 2017/1/2.
  */
 public class Load implements Module {
-    public Load(){
-        Stor.stor.put("gfw",new TreeSet<String>());
-    }
     @Override
     public void run(String[] args) throws IOException {
         if(args==null){
@@ -23,7 +20,7 @@ public class Load implements Module {
         reader.lines()
                 .filter(s -> !s.equals(""))
                 .filter(s -> (!s.startsWith("!")))
-                .forEach(((TreeSet<String>)Stor.stor.get("gfw"))::add);
+                .forEach(Stor.gfw::add);
         reader.close();
         System.out.println("Load Finished.");
     }
